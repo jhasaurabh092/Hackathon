@@ -1,0 +1,117 @@
+.gameover-page {
+    background: linear-gradient(135deg, #6c63ff 0%, #ff6b6b 100%);
+}
+
+.gameover-card {
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+}
+
+.gameover-fireworks {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    animation: coinFloat 1.8s ease-in-out infinite;
+}
+
+.gameover-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.gameover-player {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.gameover-money {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+
+.go-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-light);
+}
+
+.go-amount {
+    font-size: 3rem !important;
+}
+
+.gameover-rating {
+    border-radius: var(--radius-sm);
+    border: 2.5px solid;
+    padding: 10px 20px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.gameover-hint {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--success-dark);
+    margin-bottom: 16px;
+    min-height: 20px;
+}
+
+.gameover-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.go-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.go-stat span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.go-stat strong {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.gameover-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (min-width: 400px) {
+    .gameover-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.gameover-tagline {
+    font-size: 0.9rem;
+    font-weight: 800;
+    font-style: italic;
+    background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}

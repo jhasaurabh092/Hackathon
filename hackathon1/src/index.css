@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --primary: #6c63ff;
+  --primary-dark: #574fd6;
+  --secondary: #ff6b6b;
+  --accent: #ffd93d;
+  --success: #6bcb77;
+  --success-dark: #4da85a;
+  --danger: #ff6b6b;
+  --locked: #b0b0b0;
+  --bg: #f0f4ff;
+  --card-bg: #ffffff;
+  --text: #2d2d44;
+  --text-light: #6b7280;
+  --shadow: 0 4px 20px rgba(108,99,255,0.12);
+  --shadow-hover: 0 8px 28px rgba(108,99,255,0.22);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #e8ecff; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 8px; }
+
+/* ── Utility ───────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: inherit; font-weight: 800; font-size: 1rem;
+  border: none; cursor: pointer; border-radius: var(--radius-sm);
+  padding: 12px 24px; transition: all 0.18s ease;
+}
+.btn:active { transform: scale(0.96); }
+
+.btn-primary {
+  background: var(--primary); color: #fff;
+  box-shadow: 0 4px 14px rgba(108,99,255,0.35);
+}
+.btn-primary:hover { background: var(--primary-dark); box-shadow: 0 6px 20px rgba(108,99,255,0.45); transform: translateY(-1px); }
+
+.btn-success {
+  background: var(--success); color: #fff;
+  box-shadow: 0 4px 14px rgba(107,203,119,0.35);
+}
+.btn-success:hover { background: var(--success-dark); transform: translateY(-1px); }
+
+.btn-danger {
+  background: var(--danger); color: #fff;
+  box-shadow: 0 4px 14px rgba(255,107,107,0.35);
+}
+.btn-danger:hover { filter: brightness(0.9); transform: translateY(-1px); }
+
+.btn-lg { padding: 16px 36px; font-size: 1.15rem; border-radius: var(--radius); }
+.btn-block { width: 100%; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+/* ── Fade in animation ─────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop {
+  0%   { transform: scale(0.8); opacity: 0; }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes coinFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-12px) rotate(15deg); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+.fade-up { animation: fadeUp 0.45s ease both; }
+.pop { animation: pop 0.35s ease both; }
+
+/* ── Layout helpers ────────────────────────────── */
+.center-page {
+  min-height: 100vh; display: flex;
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+/* ── Card ──────────────────────────────────────── */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+/* ── Money glow ────────────────────────────────── */
+.money-amount {
+  font-size: 2.2rem; font-weight: 900;
+  background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulse 2.5s ease infinite;
+}
+
+/* ── Modal overlay ─────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(30,20,80,0.55);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100; padding: 20px;
+}
+.modal-box {
+  background: #fff; border-radius: var(--radius);
+  padding: 36px; max-width: 480px; width: 100%;
+  box-shadow: 0 20px 60px rgba(108,99,255,0.25);
+  animation: pop 0.35s ease both;
+}
+
+/* ── Toast / Result banner ─────────────────────── */
+.result-banner {
+  border-radius: var(--radius-sm); padding: 14px 18px;
+  font-weight: 800; font-size: 1rem;
+  text-align: center; margin-top: 14px;
+  animation: fadeUp 0.3s ease both;
+}
+.result-banner.positive { background: #e8fdf0; color: #2a9148; border: 2px solid #6bcb77; }
+.result-banner.negative { background: #fff0f0; color: #c0392b; border: 2px solid #ff6b6b; }

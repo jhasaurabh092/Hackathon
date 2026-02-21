@@ -1,0 +1,59 @@
+.level-map {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.level-section {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: #fff;
+    transition: opacity 0.2s;
+}
+
+.level-section.level-locked {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, var(--lv-color, #6c63ff) 0%, var(--lv-color, #6c63ff)cc 100%);
+    color: #fff;
+    position: relative;
+}
+
+.level-emoji {
+    font-size: 2.2rem;
+}
+
+.level-header h3 {
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+
+.level-progress {
+    font-size: 0.85rem;
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.level-lock-badge {
+    margin-left: auto;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 20px;
+}

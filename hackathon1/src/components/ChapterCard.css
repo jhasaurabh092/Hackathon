@@ -1,0 +1,65 @@
+.chapter-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 18px 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 2.5px solid #e8ecff;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-height: 140px;
+    justify-content: center;
+    position: relative;
+}
+
+.chapter-card.chapter-playable:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+}
+
+.chapter-card.chapter-locked {
+    background: #f7f8fc;
+    cursor: not-allowed;
+    border-color: #e0e0e0;
+}
+
+.chapter-card.chapter-done {
+    background: linear-gradient(135deg, #e8fdf0, #f0fff8);
+    border-color: var(--success);
+}
+
+.chapter-num {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.chapter-emoji {
+    font-size: 2rem;
+}
+
+.chapter-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.chapter-cta {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 4px;
+}
+
+.chapter-done-label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--success-dark);
+}

@@ -1,0 +1,109 @@
+.login-page {
+    background: linear-gradient(135deg, #6c63ff 0%, #a18cd1 50%, #fbc2eb 100%);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+}
+
+.login-logo {
+    margin-bottom: 20px;
+}
+
+.logo-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 8px;
+    animation: coinFloat 2.5s ease-in-out infinite;
+}
+
+.logo-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-sub {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.logo-tagline {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 6px;
+    font-style: italic;
+    background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.login-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.login-badges span {
+    background: linear-gradient(135deg, #f0f4ff, #e8ecff);
+    border: 2px solid #c8d0ff;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+.login-form label {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.login-form input {
+    padding: 14px 18px;
+    border: 2.5px solid #dde3ff;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    outline: none;
+    transition: border-color 0.2s;
+    color: var(--text);
+}
+
+.login-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+.login-error {
+    color: var(--danger);
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.login-hint {
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 600;
+}

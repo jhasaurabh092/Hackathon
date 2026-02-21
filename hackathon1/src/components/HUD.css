@@ -1,0 +1,138 @@
+.hud {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 20px 10px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid #e8ecff;
+    box-shadow: 0 2px 16px rgba(108, 99, 255, 0.10);
+    flex-wrap: wrap;
+}
+
+/* ── Brand block (logo + tagline stacked) ─────── */
+.hud-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.hud-logo {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.hud-tagline {
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-style: italic;
+    background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* ── Player info ──────────────────────────────── */
+.hud-player-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.hud-player {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-light);
+}
+
+.hud-code {
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #6c63ff, #ff6b6b);
+    color: #fff;
+    border-radius: 20px;
+    padding: 2px 7px;
+    font-family: 'Courier New', monospace;
+}
+
+.hud-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    min-width: 0;
+}
+
+.hud-center {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hud-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hud-stat-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hud-stat-value {
+    font-weight: 900;
+    font-size: 1.25rem;
+}
+
+.hud-level {
+    color: var(--primary);
+}
+
+.hud-pending .hud-stat-value {
+    color: #f59e0b;
+}
+
+.hud-divider {
+    width: 1px;
+    height: 34px;
+    background: #e8ecff;
+}
+
+.hud-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hud-btn {
+    padding: 7px 14px;
+    font-size: 0.85rem;
+}
+
+.hud-logout {
+    background: #f3f4f6;
+    color: var(--text-light);
+    box-shadow: none;
+}
+
+.hud-logout:hover {
+    background: #ffe4e4;
+    color: var(--danger);
+    transform: none;
+}
