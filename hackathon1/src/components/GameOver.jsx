@@ -12,10 +12,17 @@ export default function GameOver({ onLeaderboard }) {
         const submit = async () => {
             setSubmitting(true);
             try {
-                await fetch('/score', {
+                await fetch('/api/score', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username: state.username, score: state.money }),
+                    body: JSON.stringify({
+                        userId: state.userId,
+                        money: state.money,
+                        level: state.level,
+                        completedChapters: state.completedChapters,
+                        pendingReturns: state.pendingReturns,
+                        playerCode: state.playerCode,
+                    }),
                 });
             } catch {
                 // Backend offline — silent fail

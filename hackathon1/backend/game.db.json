@@ -1,0 +1,97 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "testplayer",
+      "passwordHash": "$2a$10$k8mhIMW.q5K3DB5bdmxGUuytwCyiS4LpsB51EPCMPxYOgnh9bREIq",
+      "createdAt": "2026-02-21T11:30:26.359Z"
+    },
+    {
+      "id": 2,
+      "username": "shrutik.varkad",
+      "passwordHash": "$2a$10$dHFl8hyzdwgLKP382cIrc.DQgb7n.uYjcfO.RV1Bnxk58IsgYJASS",
+      "createdAt": "2026-02-21T11:32:39.468Z"
+    },
+    {
+      "id": 3,
+      "username": "shanu",
+      "passwordHash": "$2a$10$08aj9MuE5KAeiFXJClUfre/wulMhGsbouVlThGCi99r/XP3nbp09u",
+      "createdAt": "2026-02-21T11:40:10.251Z"
+    },
+    {
+      "id": 4,
+      "username": "test 1",
+      "passwordHash": "$2a$10$DRxovta9cfmjJiqLmYEBmOfD34EjZxIC4dRtBwldylUzJKCF/l17S",
+      "createdAt": "2026-02-21T11:47:03.829Z"
+    }
+  ],
+  "scores": [
+    {
+      "userId": 1,
+      "money": 275,
+      "level": 3,
+      "completedChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "pendingReturns": 0,
+      "playerCode": "A3K9Z",
+      "updatedAt": "2026-02-21T11:30:58.711Z"
+    },
+    {
+      "userId": 2,
+      "money": 85,
+      "level": 1,
+      "completedChapters": [
+        1,
+        2,
+        3
+      ],
+      "pendingReturns": 0,
+      "playerCode": "RF5T7",
+      "updatedAt": "2026-02-21T11:47:31.142Z"
+    },
+    {
+      "userId": 3,
+      "money": 310,
+      "level": 3,
+      "completedChapters": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "pendingReturns": 0,
+      "playerCode": "GVHRN",
+      "updatedAt": "2026-02-21T11:48:38.068Z"
+    },
+    {
+      "userId": 4,
+      "money": 100,
+      "level": 1,
+      "completedChapters": [],
+      "pendingReturns": 0,
+      "playerCode": "",
+      "updatedAt": "2026-02-21T11:47:03.829Z"
+    }
+  ]
+}

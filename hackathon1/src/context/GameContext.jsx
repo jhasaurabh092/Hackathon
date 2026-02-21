@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
 import chapters from '../data/chapters.js';
 import { playHurray, playAlert } from '../utils/sounds.js';
 
 const INITIAL_STATE = {
     username: '',
+    userId: null,
     playerCode: '',
     level: 1,
     money: 100,
@@ -11,7 +12,7 @@ const INITIAL_STATE = {
     pendingReturns: 0,
 };
 
-const STORAGE_KEY = 'rupeерocket_state';
+const STORAGE_KEY = 'rupeepocket_state';
 
 const GameContext = createContext(null);
 
@@ -35,6 +36,9 @@ export function GameProvider({ children }) {
         }
     });
 
+    // Debounce timer ref for backend save
+    const saveTimerRef = useRef(null);
+
     // Persist to localStorage whenever state changes
     useEffect(() => {
         if (state.username) {
@@ -42,9 +46,54 @@ export function GameProvider({ children }) {
         }
     }, [state]);
 
-    // Login – sets username, generates code, resets game state
-    const login = useCallback((username) => {
-        const fresh = { ...INITIAL_STATE, username, playerCode: generateCode() };
+    // Auto-save to backend whenever game state changes (debounced 1s)
+    useEffect(() => {
+        if (!state.userId || !state.username) return;
+
+        if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+        saveTimerRef.current = setTimeout(() => {
+            saveProgressToBackend(state);
+        }, 1000);
+
+        return () => {
+            if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+        };
+    }, [state.money, state.level, state.completedChapters, state.pendingReturns]);
+
+    const saveProgressToBackend = useCallback(async (currentState) => {
+        if (!currentState.userId) return;
+        try {
+            await fetch('/api/score', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userId: currentState.userId,
+                    money: currentState.money,
+                    level: currentState.level,
+                    completedChapters: currentState.completedChapters,
+                    pendingReturns: currentState.pendingReturns,
+                    playerCode: currentState.playerCode,
+                }),
+            });
+        } catch {
+            // Backend offline — silent fail, localStorage still has state
+        }
+    }, []);
+
+    // Login — accepts userId + optional saved game state from backend
+    const login = useCallback((username, userId, savedGameState) => {
+        const fresh = savedGameState
+            ? {
+                username,
+                userId: userId ?? null,
+                playerCode: savedGameState.playerCode || generateCode(),
+                level: savedGameState.level ?? 1,
+                money: savedGameState.money ?? 100,
+                completedChapters: savedGameState.completedChapters ?? [],
+                pendingReturns: savedGameState.pendingReturns ?? 0,
+            }
+            : { ...INITIAL_STATE, username, userId: userId ?? null, playerCode: generateCode() };
+
         setState(fresh);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(fresh));
     }, []);
@@ -138,6 +187,7 @@ export function GameProvider({ children }) {
             isGameOver,
             getLevelStatus,
             chapters,
+            saveProgressToBackend,
         }}>
             {children}
         </GameContext.Provider>

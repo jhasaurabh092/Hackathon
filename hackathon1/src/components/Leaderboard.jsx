@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useGame } from '../context/GameContext.jsx';
 import './Leaderboard.css';
 
 export default function Leaderboard({ onClose }) {
+    const { state } = useGame();
     const [scores, setScores] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        fetch('/leaderboard')
+        fetch('/api/leaderboard')
             .then(r => r.json())
             .then(data => {
                 // Support both array and { scores: [] } shapes
@@ -38,10 +40,17 @@ export default function Leaderboard({ onClose }) {
                 {!loading && scores.length > 0 && (
                     <div className="lb-list">
                         {scores.map((entry, i) => (
-                            <div key={i} className={`lb-row ${i < 3 ? 'lb-top' : ''}`}>
+                            <div
+                                key={i}
+                                className={`lb-row ${i < 3 ? 'lb-top' : ''} ${entry.username === state.username ? 'lb-me' : ''}`}
+                            >
                                 <span className="lb-rank">{medals[i] || `#${i + 1}`}</span>
-                                <span className="lb-name">{entry.username || entry.name}</span>
-                                <span className="lb-score">₹{entry.score}</span>
+                                <span className="lb-name">
+                                    {entry.username}
+                                    {entry.username === state.username && <span className="lb-you"> (You)</span>}
+                                </span>
+                                <span className="lb-meta">Lvl {entry.level} · {entry.completedChapters}/15 ch</span>
+                                <span className="lb-score">₹{entry.money}</span>
                             </div>
                         ))}
                     </div>
