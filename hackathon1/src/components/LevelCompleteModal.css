@@ -1,8 +1,8 @@
-/* ── Overlay ───────────────────────────────────── */
+/* ── Overlay ─────────────────────────────────── */
 .lc-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(10, 5, 40, 0.75);
+    background: rgba(10, 5, 40, 0.82);
     backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
@@ -11,35 +11,145 @@
     overflow: hidden;
 }
 
-/* ── Rocket flies from bottom to top ──────────── */
-@keyframes rocketLaunch {
+/* ════════════════════════════════════════════════
+   ROCKET: LEFT → RIGHT sweep (main showstopper)
+   ════════════════════════════════════════════════ */
+@keyframes rocketLR {
     0% {
-        transform: translateX(-50%) translateY(110vh) rotate(-15deg);
+        left: -130px;
+        top: 46vh;
+        transform: rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+
+    8% {
+        transform: rotate(0deg) scale(1.1);
         opacity: 1;
     }
 
-    60% {
+    45% {
+        left: 47vw;
+        top: 44vh;
+        transform: rotate(-5deg) scale(1.25);
+    }
+
+    85% {
+        top: 46vh;
+        transform: rotate(0deg) scale(1.15);
         opacity: 1;
     }
 
     100% {
-        transform: translateX(-50%) translateY(-30vh) rotate(-15deg);
+        left: calc(100vw + 130px);
+        top: 46vh;
+        transform: rotate(3deg) scale(0.9);
         opacity: 0;
     }
 }
 
-.lc-rocket {
+.lc-rocket-lr {
     position: absolute;
-    left: 50%;
-    bottom: 0;
-    font-size: 4rem;
-    animation: rocketLaunch 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    top: 46vh;
+    left: -130px;
+    font-size: 5.5rem;
+    line-height: 1;
+    animation: rocketLR 1.7s cubic-bezier(0.25, 0.8, 0.55, 1) 0.25s forwards;
     pointer-events: none;
-    z-index: 10;
-    filter: drop-shadow(0 0 20px #ff6b6b);
+    z-index: 30;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    filter: drop-shadow(0 0 28px #ffd93d) drop-shadow(0 0 56px #ff6b6b);
 }
 
-/* ── Star burst around screen ─────────────────── */
+.lc-rocket-emoji {
+    display: inline-block;
+    animation: rocketWobble 0.16s ease-in-out infinite alternate;
+}
+
+@keyframes rocketWobble {
+    from {
+        transform: translateY(-4px);
+    }
+
+    to {
+        transform: translateY(4px);
+    }
+}
+
+.lc-trail {
+    font-size: 2.4rem;
+    opacity: 0.55;
+    margin-left: -8px;
+}
+
+/* ════════════════════════════════════════════════
+   ROCKET: RIGHT → LEFT sweep (second pass, smaller)
+   ════════════════════════════════════════════════ */
+@keyframes rocketRL {
+    0% {
+        right: -120px;
+        top: 32vh;
+        transform: scaleX(-1) scale(0.8);
+        opacity: 0;
+    }
+
+    10% {
+        transform: scaleX(-1) scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        right: calc(100vw + 120px);
+        top: 32vh;
+        transform: scaleX(-1) rotate(-4deg) scale(0.9);
+        opacity: 0;
+    }
+}
+
+.lc-rocket-rl {
+    position: absolute;
+    top: 32vh;
+    right: -120px;
+    font-size: 4rem;
+    animation: rocketRL 1.4s cubic-bezier(0.25, 0.8, 0.55, 1) 1.5s forwards;
+    pointer-events: none;
+    z-index: 29;
+    filter: drop-shadow(0 0 18px #6c63ff) drop-shadow(0 0 36px #ff6b6b);
+}
+
+/* ── Confetti rain ─────────────────────────────── */
+.lc-confetti {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-60px) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.3;
+    }
+}
+
+.lc-conf-item {
+    position: absolute;
+    font-size: 1.6rem;
+    top: -60px;
+    left: calc(var(--ci) * 8.5%);
+    animation: confettiFall linear forwards;
+    animation-duration: calc(1.8s + var(--ci) * 0.2s);
+    animation-delay: calc(var(--ci) * 0.08s);
+}
+
+/* ── Star burst from centre ────────────────────── */
 @keyframes starBurst {
     0% {
         transform: translate(0, 0) scale(0);

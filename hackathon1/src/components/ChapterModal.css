@@ -106,3 +106,68 @@
 .result-money {
     font-size: 1.05rem;
 }
+
+/* ── Emoji Reaction Burst ─────────────────────── */
+.emoji-burst-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    margin: 8px 0 2px;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateY(-20px) scale(1.3) rotate(-5deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-60px) scale(0.9) rotate(10deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatDown {
+    0% {
+        transform: translateY(0) scale(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateY(16px) scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(50px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.reaction-emoji {
+    position: absolute;
+    font-size: 2.2rem;
+    animation-fill-mode: forwards;
+    animation-duration: 1.1s;
+    animation-timing-function: ease-out;
+    animation-delay: calc(var(--ri) * 0.12s);
+}
+
+.reaction-happy {
+    animation-name: floatUp;
+    /* Spread each emoji horizontally */
+    left: calc(10% + var(--ri) * 17%);
+}
+
+.reaction-sad {
+    animation-name: floatDown;
+    left: calc(10% + var(--ri) * 17%);
+}

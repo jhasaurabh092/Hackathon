@@ -38,3 +38,78 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+/* ── Rocket Running Strip ─────────────────────── */
+.rocket-strip {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #1a1060 0%, #3b2fa0 40%, #6c63ff 70%, #ff6b6b 100%);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.15);
+    height: 42px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.25);
+}
+
+.rocket-track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    white-space: nowrap;
+    /* Start fully off-screen left, end fully off-screen right */
+    animation: rocketRun 7s linear infinite;
+    will-change: transform;
+}
+
+@keyframes rocketRun {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(110vw);
+    }
+}
+
+.strip-rocket {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 10px #ffd93d) drop-shadow(0 0 20px #ff6b6b);
+    animation: rocketBob 0.5s ease-in-out infinite alternate;
+    display: inline-block;
+}
+
+@keyframes rocketBob {
+    from {
+        transform: translateY(-3px) rotate(-5deg);
+    }
+
+    to {
+        transform: translateY(3px) rotate(5deg);
+    }
+}
+
+.strip-item {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    animation: stripBounce 0.7s ease-in-out infinite alternate;
+    display: inline-block;
+}
+
+.strip-coin {
+    animation-delay: 0.1s;
+}
+
+.strip-star {
+    animation-delay: 0.25s;
+}
+
+@keyframes stripBounce {
+    from {
+        transform: translateY(-2px);
+    }
+
+    to {
+        transform: translateY(2px);
+    }
+}

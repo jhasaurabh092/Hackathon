@@ -2,6 +2,16 @@ import React, { useState } from 'react';
 import { useGame } from '../context/GameContext.jsx';
 import './ChapterModal.css';
 
+// Pick emojis based on money/pending outcome
+function getReactionEmojis(moneyDelta, pendingDelta) {
+    if (moneyDelta > 0 || pendingDelta > 0) {
+        return ['🎉', '😄', '🤩', '💰', '⭐'];
+    } else if (moneyDelta < 0) {
+        return ['😢', '😟', '💸', '😭', '🙈'];
+    }
+    return ['😐', '🤔', '🙂', '👍', '💡'];
+}
+
 export default function ChapterModal({ chapter, onClose }) {
     const { completeChapter, state } = useGame();
     const [chosen, setChosen] = useState(null);
@@ -25,6 +35,9 @@ export default function ChapterModal({ chapter, onClose }) {
     };
 
     const resultPositive = chosen && ((chosen.money || 0) >= 0 || (chosen.pending || 0) > 0);
+    const moneyDelta = chosen ? (chosen.money || 0) : 0;
+    const pendingDelta = chosen ? (chosen.pending || 0) : 0;
+    const reactionEmojis = chosen ? getReactionEmojis(moneyDelta, pendingDelta) : [];
 
     return (
         <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && !chosen && onClose()}>
@@ -60,6 +73,21 @@ export default function ChapterModal({ chapter, onClose }) {
                     <div className="result-banner positive">✅ You've already completed this chapter!</div>
                 )}
 
+                {/* Emoji reaction burst */}
+                {chosen && (
+                    <div className="emoji-burst-container" aria-hidden="true">
+                        {reactionEmojis.map((e, i) => (
+                            <span
+                                key={i}
+                                className={`reaction-emoji ${moneyDelta < 0 ? 'reaction-sad' : 'reaction-happy'}`}
+                                style={{ '--ri': i }}
+                            >
+                                {e}
+                            </span>
+                        ))}
+                    </div>
+                )}
+
                 {/* Result after choosing */}
                 {chosen && (
                     <div className={`result-banner ${resultPositive ? 'positive' : 'negative'}`}>
@@ -87,3 +115,4 @@ export default function ChapterModal({ chapter, onClose }) {
         </div>
     );
 }
+

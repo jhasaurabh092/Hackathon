@@ -40,12 +40,11 @@
     white-space: nowrap;
 }
 
-/* ── Player info ──────────────────────────────── */
+/* ── Player info (now on the right side) ───────── */
 .hud-player-info {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-top: 4px;
 }
 
 .hud-player {
@@ -118,6 +117,15 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Vertical separator between username and buttons */
+.hud-divider-v {
+    width: 1px;
+    height: 34px;
+    background: #e8ecff;
+    margin: 0 4px;
 }
 
 .hud-btn {

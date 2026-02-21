@@ -7,16 +7,11 @@ export default function HUD({ onLeaderboard }) {
 
     return (
         <header className="hud">
+            {/* LEFT: brand name + tagline only */}
             <div className="hud-left">
                 <div className="hud-brand">
                     <span className="hud-logo">🚀 Rupee Rocket</span>
                     <span className="hud-tagline">"Rupee in Pocket, Ride like Rocket!"</span>
-                </div>
-                <div className="hud-player-info">
-                    <span className="hud-player">👤 {state.username}</span>
-                    {state.playerCode && (
-                        <span className="hud-code" title="Your Player Code">#{state.playerCode}</span>
-                    )}
                 </div>
             </div>
 
@@ -41,7 +36,15 @@ export default function HUD({ onLeaderboard }) {
                 )}
             </div>
 
+            {/* RIGHT: username + player code + action buttons */}
             <div className="hud-right">
+                <div className="hud-player-info">
+                    <span className="hud-player">👤 {state.username}</span>
+                    {state.playerCode && (
+                        <span className="hud-code" title="Your Player Code">#{state.playerCode}</span>
+                    )}
+                </div>
+                <div className="hud-divider hud-divider-v" />
                 <button className="btn btn-primary hud-btn" onClick={onLeaderboard}>🏅 Scores</button>
                 <button className="btn hud-btn hud-logout" onClick={logout} title="Reset Game">🔄</button>
             </div>

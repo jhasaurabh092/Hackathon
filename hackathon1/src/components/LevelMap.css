@@ -1,7 +1,8 @@
 .level-map {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
+    overflow: visible;
 }
 
 .level-section {
@@ -20,35 +21,74 @@
 .level-header {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 18px 24px;
-    background: linear-gradient(135deg, var(--lv-color, #6c63ff) 0%, var(--lv-color, #6c63ff)cc 100%);
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, var(--lv-color, #6c63ff) 0%, color-mix(in srgb, var(--lv-color, #6c63ff) 70%, #000) 100%);
     color: #fff;
     position: relative;
 }
 
 .level-emoji {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    flex-shrink: 0;
 }
 
-.level-header h3 {
-    font-size: 1.15rem;
+.level-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.level-label {
+    font-size: 0.72rem;
     font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.level-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.level-tagline {
+    font-size: 0.82rem;
+    font-weight: 600;
+    font-style: italic;
+    opacity: 0.88;
+    line-height: 1.4;
+    margin-top: 2px;
 }
 
 .level-progress {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    opacity: 0.9;
+    opacity: 0.85;
+    margin-top: 4px;
+    background: rgba(255, 255, 255, 0.18);
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    width: fit-content;
 }
 
 .level-lock-badge {
     margin-left: auto;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    padding: 4px 12px;
+    padding: 6px 14px;
     font-size: 0.85rem;
     font-weight: 800;
+    flex-shrink: 0;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .chapter-grid {

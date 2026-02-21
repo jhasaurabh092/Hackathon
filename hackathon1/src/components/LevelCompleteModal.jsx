@@ -14,23 +14,39 @@ export default function LevelCompleteModal({ completedLevel, onClose }) {
 
     useEffect(() => {
         playCelebration();
-        // Auto-close after 5 seconds
-        const t = setTimeout(onClose, 5000);
+        const t = setTimeout(onClose, 6000);
         return () => clearTimeout(t);
     }, []);
 
     return (
         <div className="lc-overlay" onClick={onClose}>
-            {/* Rocket flying up */}
-            <div className="lc-rocket">🚀</div>
 
-            {/* Stars burst */}
+            {/* ── MAIN: Rocket sweeps LEFT → RIGHT across screen centre ── */}
+            <div className="lc-rocket-lr" aria-hidden="true">
+                <span className="lc-rocket-emoji">🚀</span>
+                <span className="lc-trail">💨</span>
+            </div>
+
+            {/* ── Second rocket sweeps right → left, slightly higher ── */}
+            <div className="lc-rocket-rl" aria-hidden="true">
+                <span className="lc-rocket-emoji">🚀</span>
+            </div>
+
+            {/* ── Confetti coins & stars scattered across screen ── */}
+            <div className="lc-confetti" aria-hidden="true">
+                {['💰', '⭐', '✨', '💎', '🌟', '💰', '⭐', '✨', '💫', '💰', '🌟', '✨'].map((s, i) => (
+                    <span key={i} className="lc-conf-item" style={{ '--ci': i }}>{s}</span>
+                ))}
+            </div>
+
+            {/* ── Stars burst from centre ── */}
             <div className="lc-stars" aria-hidden="true">
                 {['⭐', '🌟', '✨', '💫', '⭐', '🌟', '✨', '💫', '⭐', '🌟'].map((s, i) => (
                     <span key={i} className="lc-star" style={{ '--i': i }}>{s}</span>
                 ))}
             </div>
 
+            {/* ── Info card ── */}
             <div className="lc-card" onClick={e => e.stopPropagation()}>
                 <div className="lc-wow">WOWwww!! 🎉</div>
 
@@ -54,8 +70,9 @@ export default function LevelCompleteModal({ completedLevel, onClose }) {
                     🚀 Keep Going!
                 </button>
 
-                <p className="lc-hint">Auto-closing in 5s…</p>
+                <p className="lc-hint">Auto-closing in 6s…</p>
             </div>
         </div>
     );
 }
+

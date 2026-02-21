@@ -47,6 +47,24 @@ export default function GameScreen() {
         <div className="game-screen">
             <HUD onLeaderboard={() => setShowLeaderboard(true)} />
 
+            {/* Rocket running strip — scrolls left→right continuously */}
+            <div className="rocket-strip" aria-hidden="true">
+                <div className="rocket-track">
+                    <span className="strip-item strip-star">⭐</span>
+                    <span className="strip-item strip-coin">💰</span>
+                    <span className="strip-item strip-star">✨</span>
+                    <span className="strip-item strip-coin">💎</span>
+                    <span className="strip-item strip-star">🌟</span>
+                    <span className="strip-rocket">🚀</span>
+                    <span className="strip-item strip-coin">💰</span>
+                    <span className="strip-item strip-star">⭐</span>
+                    <span className="strip-item strip-coin">💎</span>
+                    <span className="strip-item strip-star">✨</span>
+                    <span className="strip-item strip-coin">💰</span>
+                    <span className="strip-item strip-star">🌟</span>
+                </div>
+            </div>
+
             <main className="game-main">
                 <div className="game-intro fade-up">
                     <h2>Welcome aboard, {state.username}! 🚀</h2>
