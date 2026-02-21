@@ -10,7 +10,7 @@ export default function HUD({ onLeaderboard }) {
             {/* LEFT: brand name + tagline only */}
             <div className="hud-left">
                 <div className="hud-brand">
-                    <span className="hud-logo">🚀 Rupee Rocket</span>
+                    <span className="hud-logo">💰 Rupee Pocket</span>
                     <span className="hud-tagline">"Rupee in Pocket, Ride like Rocket!"</span>
                 </div>
             </div>

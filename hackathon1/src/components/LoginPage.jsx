@@ -30,7 +30,7 @@ export default function LoginPage() {
             <div className="login-card card fade-up">
                 <div className="login-logo">
                     <span className="logo-icon">🚀</span>
-                    <h1 className="logo-title">Rupee Rocket</h1>
+                    <h1 className="logo-title">Rupee Pocket</h1>
                     <p className="logo-tagline">"Rupee in Pocket, Ride like Rocket!"</p>
                 </div>
 

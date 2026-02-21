@@ -1,5 +1,5 @@
 /**
- * Rupee Rocket — Sound Effects using Web Audio API
+ * Rupee Pocket — Sound Effects using Web Audio API
  * No external files needed — all generated programmatically.
  */
 
